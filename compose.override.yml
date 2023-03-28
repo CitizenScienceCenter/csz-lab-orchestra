@@ -1,0 +1,8 @@
+services:
+  c3s:
+    networks:
+      - backend-net
+
+networks:
+  backend-net:
+    name: backend-net
