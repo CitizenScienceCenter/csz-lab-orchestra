@@ -14,28 +14,13 @@ USER c3s
 
 
 
-FROM base AS dev
-LABEL ch.citizenscience.env="DEV"
-
-WORKDIR /app/c3s-lab
-
-# clone pybossa into the container (from github)
-# RUN git clone --recursive https://github.com/CitizenScienceCenter/c3s-lab-client /app/c3s-lab
-
-# alternative: local copy of c3s to the container
-COPY --chown=c3s:c3s c3s-lab-client /app/c3s-lab
-COPY --chown=c3s:c3s config/env/dev.env.js /app/c3s-lab/config/dev.env.js
-RUN yarn install
-
-EXPOSE 8080
-
-CMD ["yarn", "run", "dev"]
-
-
-
 FROM base AS build
 
 WORKDIR /app/c3s-lab
+
+# install dependencies
+COPY --chown=c3s:c3s c3s-lab-client/package*.json /app/c3s-lab/
+RUN yarn install
 
 # clone pybossa into the container (from github)
 # RUN git clone --recursive https://github.com/CitizenScienceCenter/c3s-lab-client /app/c3s-lab
@@ -44,7 +29,8 @@ WORKDIR /app/c3s-lab
 COPY --chown=c3s:c3s c3s-lab-client /app/c3s-lab
 COPY --chown=c3s:c3s config/env/test.env.js /app/c3s-lab/config/prod.env.js
 
-RUN yarn install && yarn run build
+RUN yarn run build
+
 # RUN npm install && npm run build
 
 # replace env vars based on different deployments (dev, test, stag, prod) 
