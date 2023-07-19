@@ -1,20 +1,20 @@
 services:
   c3s:
     container_name: c3s
-    image: c3s-lab:prod
+    image: c3s-lab:dev
     build: 
       context: ./
       dockerfile: ./docker/c3s-lab/Dockerfile
-      target: deploy
+      target: dev
     ports:
-      - "8888:80"
-    # volumes:
-    #   - ./config/nginx/templates:/etc/nginx/templates
-    #   - ./config/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - 8080:8080
+    volumes:
+      # - ./c3s-lab-client:/app/c3s-lab
+      - ./config/env/test.env.js:/app/c3s-lab/config/prod.env.js
     networks:
-      - frontend-net
+      - lab-net
 
 networks:
-  frontend-net:
-    name: pybossa-frontend-net
+  lab-net:
+    name: lab-web-net
 
