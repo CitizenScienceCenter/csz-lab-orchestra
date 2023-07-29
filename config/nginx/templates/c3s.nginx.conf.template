@@ -1,7 +1,9 @@
 server {
     listen       80;
     listen  [::]:80;
-    server_name  localhost.localdomain;
+    server_name  ${HOST_NAME} www.${HOST_NAME};
+        
+    root  /usr/share/nginx/html;
 
     #access_log  /var/log/nginx/host.access.log  main;
 
@@ -44,4 +46,5 @@ server {
     #    deny  all;
     #}
 }
+
 
