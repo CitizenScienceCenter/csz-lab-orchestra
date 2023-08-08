@@ -29,7 +29,7 @@ FROM base AS build
 
 # alternative: local copy of c3s to the container
 # COPY --chown=c3s:c3s c3s-lab-client /app/c3s-lab
-COPY --chown=c3s:c3s config/env/test.env.js /app/c3s-lab/config/prod.env.js
+COPY --chown=c3s:c3s config/env/prod.env.js /app/c3s-lab/config/prod.env.js
 
 RUN yarnpkg run build
 

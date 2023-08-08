@@ -5,6 +5,7 @@ services:
       context: ./
       dockerfile: ./docker/c3s-lab/Dockerfile
       target: deploy
+    restart: always
     ports:
       - 80:80
     volumes:

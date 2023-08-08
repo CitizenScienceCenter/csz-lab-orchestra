@@ -9,7 +9,6 @@ services:
     ports:
       - 8080:8080
     volumes:
-      # - ./c3s-lab-client:/app/c3s-lab
       - ./config/env/test.env.js:/app/c3s-lab/config/prod.env.js
     networks:
       - lab-net
