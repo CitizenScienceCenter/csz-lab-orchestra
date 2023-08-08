@@ -33,22 +33,6 @@ COPY --chown=c3s:c3s config/env/prod.env.js /app/c3s-lab/config/prod.env.js
 
 RUN yarnpkg run build
 
-# RUN npm install && npm run build
-
-# replace env vars based on different deployments (dev, test, stag, prod) 
-# build application
-#COPY --chown=c3s:c3s --chmod=0755 docker/c3s-lab-client/entrypoint.sh /app/entrypoint.sh
-#ENTRYPOINT ["/app/entrypoint.sh"]
-
-FROM base AS dev
-LABEL ch.citizenscience.env="DEV"
-
-WORKDIR /app/c3s-lab
-
-# RUN npm install webpack-dev-server
-
-EXPOSE 8080
-CMD ["yarnpkg", "run", "dev"]
 
 
 FROM nginx:latest as deploy
