@@ -15,10 +15,7 @@ USER c3s
 WORKDIR /app/c3s-lab
 
 # clone pybossa into the container (from github)
-# RUN git clone --recursive https://github.com/CitizenScienceCenter/c3s-lab-client /app/c3s-lab
-
-# alternative: local copy of c3s to the container
-COPY --chown=c3s:c3s c3s-lab-client /app/c3s-lab
+RUN git clone --recursive https://github.com/CitizenScienceCenter/c3s-lab-client /app/c3s-lab
 
 # install app dependencies
 RUN yarnpkg install
@@ -26,6 +23,9 @@ RUN yarnpkg install
 
 
 FROM base AS build
+
+# alternative: local copy of c3s to the container
+COPY --chown=c3s:c3s c3s-lab-client /app/c3s-lab
 
 COPY --chown=c3s:c3s config/env/prod.env.js /app/c3s-lab/config/prod.env.js
 
