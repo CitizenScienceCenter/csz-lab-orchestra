@@ -14,10 +14,12 @@ USER c3s
 
 WORKDIR /app/c3s-lab
 
-# clone pybossa into the container (from github)
-RUN git clone --recursive https://github.com/CitizenScienceCenter/c3s-lab-client /app/c3s-lab
-
 # install app dependencies
+COPY --chown=c3s:c3s c3s-lab-client/package.json c3s-lab-client/package-lock.json* /app/c3s-lab/
+
+# clone pybossa into the container (from github)
+# RUN git clone --recursive https://github.com/CitizenScienceCenter/c3s-lab-client /app/c3s-lab
+
 RUN yarnpkg install
 
 
