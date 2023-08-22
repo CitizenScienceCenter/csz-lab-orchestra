@@ -1,5 +1,6 @@
 services:
   c3s:
+    container_name: c3s
     image: c3s-lab:prod
     build: 
       context: ./
