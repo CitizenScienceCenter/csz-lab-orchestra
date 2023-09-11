@@ -1,3 +1,3 @@
-[submodule "c3s-lab-client"]
-	path = c3s-lab-client
-	url = git@github.com:CitizenScienceCenter/c3s-lab-client.git
+[submodule "csz-lab-app"]
+	path = csz-lab-app
+	url = git@github.com:CitizenScienceCenter/csz-lab-app.git
