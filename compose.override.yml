@@ -1,0 +1,15 @@
+services:
+  c3s:
+    image: c3s-lab:dev
+    build: 
+      args:
+        ENV_FILE_NAME: dev.env.js
+    env_file:
+      - ./config/env/.env.dev
+    networks:
+      - frontend-net
+
+
+networks: 
+  frontend-net:
+    name: lab-web-net

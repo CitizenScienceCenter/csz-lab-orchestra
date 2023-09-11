@@ -1,0 +1,7 @@
+services:
+  c3s:
+    image: c3s-lab:prod
+    env_file:
+      - ./config/env/.env.deploy
+    ports:
+      - 80:80
