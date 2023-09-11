@@ -1,9 +1,9 @@
 services:
-  c3s:
-    container_name: c3s
+  csz-lab:
+    container_name: csz-lab
     build: 
       context: ./
-      dockerfile: ./docker/c3s-lab/Dockerfile
+      dockerfile: ./docker/csz-lab/Dockerfile
       target: deploy
     restart: always
     volumes:

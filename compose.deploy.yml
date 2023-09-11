@@ -1,6 +1,6 @@
 services:
-  c3s:
-    image: c3s-lab:prod
+  csz-lab:
+    image: csz-lab:prod
     env_file:
       - ./config/env/.env.deploy
     ports:

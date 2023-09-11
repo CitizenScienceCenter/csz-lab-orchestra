@@ -1,6 +1,6 @@
 services:
-  c3s:
-    image: c3s-lab:dev
+  csz-lab:
+    image: csz-lab:dev
     build: 
       args:
         ENV_FILE_NAME: dev.env.js
