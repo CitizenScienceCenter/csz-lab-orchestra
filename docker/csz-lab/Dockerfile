@@ -38,6 +38,7 @@ RUN yarnpkg run build
 FROM nginx:latest as deploy
 LABEL ch.citizenscience.env="PROD"
 COPY --from=build /app/csz-lab/dist /usr/share/nginx/html
+COPY csz-lab-app/public /usr/share/nginx/html/public
 #COPY nginx.conf /etc/nginx/nginx.conf
 
 EXPOSE 80
