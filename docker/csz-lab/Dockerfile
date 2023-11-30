@@ -1,4 +1,4 @@
-FROM --platform=linux/amd64 node:16.13.2 AS base
+FROM --platform=linux/amd64 node:16.14 AS base
 LABEL csz.web.image.authors="daniel.boehler@uzh.ch" \
       csz.web.image.version="1.0"
 
