@@ -17,7 +17,7 @@ WORKDIR /app/csz-lab
 # install app dependencies
 COPY --chown=csz:csz csz-lab-app/package.json csz-lab-app/package-lock.json* /app/csz-lab/
 
-# clone pybossa into the container (from github)
+# clone csz-lab into the container (from github)
 # RUN git clone --recursive https://github.com/CitizenScienceCenter/csz-lab-app /app/csz-lab
 
 RUN yarnpkg install
