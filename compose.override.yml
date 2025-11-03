@@ -1,15 +1,27 @@
 services:
   csz-lab:
+    # Override the base service for development
     image: csz-lab:dev
     build: 
+      context: ./
+      dockerfile: ./docker/csz-lab/Dockerfile
+      target: development
       args:
         ENV_FILE_NAME: dev.env.js
+    volumes:
+      # Mount the entire csz-lab-app folder for full development and testing
+      - ./csz-lab-app/src:/app/csz-lab/src
+      #- ./config/env/dev.env.js:/app/csz-lab/config/dev.env.js
     env_file:
       - ./config/env/.env.dev
+    restart: unless-stopped
     networks:
-      - frontend-net
+      frontend:
+        aliases:
+          - localhost.localdomain
+          - csz-lab
 
+networks:
+  frontend:
+    name: lab-web-network
 
-networks: 
-  frontend-net:
-    name: lab-web-net
